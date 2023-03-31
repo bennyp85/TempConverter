@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <form action="/convert" method="post">
+    <input type="number" name="temperature" placeholder="Temperature" step="0.01" required <%= temperature ? `value="${temperature}"` : '' %>>
+    <select name="inputUnit" required>
+      <option value="">Select input unit</option>
+      <option value="celsius" <%= inputUnit === 'celsius' ? 'selected' : '' %>>Celsius</option>
+      <option value="fahrenheit" <%= inputUnit === 'fahrenheit' ? 'selected' : '' %>>Fahrenheit</option>
+      <option value="kelvin" <%= inputUnit === 'kelvin' ? 'selected' : '' %>>Kelvin</option>
+    </select>
+    <select name="outputUnit" required>
+      <option value="">Select output unit</option>
+      <option value="celsius" <%= outputUnit === 'celsius' ? 'selected' : '' %>>Celsius</option>
+      <option value="fahrenheit" <%= outputUnit === 'fahrenheit' ? 'selected' : '' %>>Fahrenheit</option>
+      <option value="kelvin" <%= outputUnit === 'kelvin' ? 'selected' : '' %>>Kelvin</option>
+    </select>
+    <button type="submit">Convert</button>
+  </form>
+  <% if (result) { %>
+    <p><%= temperature %> <%= inputUnit %> is equal to <%= result %> <%= outputUnit %>.</p>
+  <% } %>
+  <script src="/script.js"></script>
+</body>
+</html>
